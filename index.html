@@ -4,13 +4,71 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <title>Priority To-Do List</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  Hello world
-  <script src="script.js"></script>
+
+  <h1>Priority To-Do List</h1>
+  <input id="todoInput" />
+  <select id="selectPriority">
+    <option value="Low Priority">Low Priority</option>
+    <option value="Medium Priority">Medium Priority</option>
+    <option value="High Priority">High Priority</option>
+  </select>
+  <button id="addTodoButton">Add</button>
+  <div class="container text-center">
+    <div class="row align-items-start">
+      <div class="col">
+        Low Priority
+        <ul id="lowPriorityList"></ul>
+      </div>
+      <div class="col">
+        Medium Priority
+        <ul id="mediumPriorityList"></ul>
+      </div>
+      <div class="col">
+        High Priority
+        <ul id="highPriorityList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    const todoInput = document.getElementById("todoInput");
+    const selectPriority = document.getElementById("selectPriority");
+    const addTodoButton = document.getElementById("addTodoButton");
+    const lowPriorityList = document.getElementById("lowPriorityList");
+    const mediumPriorityList = document.getElementById("mediumPriorityList");
+    const highPriorityList = document.getElementById("highPriorityList");
+
+    addTodoButton.addEventListener("click", function () {
+      const listElement = document.createElement('li');
+      listElement.innerHTML = `<p>${todoInput.value}<button id="deleteButton" onClick="deleteTodo(this)">Delete</button></p>`;
+
+      let todoPriority = selectPriority.value;
+
+      switch (todoPriority) {
+        case "Low Priority":
+          lowPriorityList.appendChild(listElement);
+          break;
+        case "Medium Priority":       
+        mediumPriorityList.appendChild(listElement);
+          break;
+        case "High Priority":
+          highPriorityList.appendChild(listElement);
+      };
+
+
+    });
+
+  function deleteTodo(deleteBtn){
+    
+  }
+    
+  </script>
 </body>
 
 </html>
