@@ -65,7 +65,8 @@
     });
 
   function deleteTodo(deleteBtn){
-    
+    const listItem = deleteBtn.parentElement.parentElement;
+    listItem.remove();
   }
     
   </script>
